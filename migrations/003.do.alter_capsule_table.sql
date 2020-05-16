@@ -1,0 +1,4 @@
+ALTER TABLE capsules
+  ADD COLUMN
+    usernumber INTEGER REFERENCES users(id)
+    ON DELETE SET NULL;
