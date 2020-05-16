@@ -25,7 +25,7 @@ const serializeCapsule = capsule => {
 capsulesRouter
     .route('/')
 /*
-* Recieves all expeneses from all users.
+* Recieves all capsules from all users.
 */ 
     .get((req, res, next) => {
         const knexInstance = req.app.get('db');
@@ -36,7 +36,7 @@ capsulesRouter
             .catch(next)
     })
 /*
-* Add new capsules. Needs, amount, style description, date and usernumber. 
+* Add new capsules. Needs, title, note, imageurl, burydate, unlockdate and usernumber. 
 *Usernumber is user's id which is a primary key
 */
     .post(jsonParser, (req, res, next) => {
@@ -53,7 +53,6 @@ capsulesRouter
             newCapsule
         )
             .then(capsule => {
-                console.log(capsule)
                 res
                     .status(201)
                     .location(path.posix.join(req.originalUrl, `/${capsule.id}`))
@@ -78,23 +77,21 @@ capsulesRouter
                     error: { message: `capsule doesn't exist` }
                 })
             } 
-            console.log
             res.capsule = capsule
             next()
         })
         .catch(next)
     })
 /*
-* Recieves the expenese from specific capsule id.
+* Recieves the capsule from specific capsule id.
 */ 
     .get((req, res, next) => {
-        console.log(res);
         res.json(serializeCapsule(res.capsule))
     })
 
     
 /*
-* Deletes expeneses from specific capsule id.
+* Deletes capsules from specific capsule id.
 */ 
     .delete((req, res, next) => {
         capsuleService.deleteCapsule(
@@ -103,12 +100,11 @@ capsulesRouter
         )
             .then(() => {
                 res.status(204).end()
-                console.log('worked');
             })
             .catch(next)
     })
 /*
-* Updates expeneses from specific capsule id.
+* Updates capsules from specific capsule id.
 */ 
     .patch(jsonParser, (req, res, next) => {
         const { title, note, unlockdate, burydate, imageurl } = req.body;
@@ -150,20 +146,19 @@ capsulesRouter
                     error: { message: `capsule doesn't exist` }
                 })
             } 
-            console.log
             res.capsule = capsule
             next()
         })
         .catch(next)
     })
 /*
-* Recieves all expeneses from specific user.
+* Recieves all capsules from specific user.
 */ 
     .get((req, res, next) => {
         res.json(res.capsule.map(serializeCapsule))
     })
 /*
-* Deletes expeneses from specific user.
+* Deletes capsule from specific user.
 */ 
     .delete((req, res, next) => {
         capsuleService.deleteCapsule(
@@ -172,12 +167,11 @@ capsulesRouter
         )
             .then(() => {
                 res.status(204).end()
-                console.log('worked');
             })
             .catch(next)
     })
 /*
-* Updates expeneses from specific user.
+* Updates capsule from specific user.
 */ 
     .patch(jsonParser, (req, res, next) => {
         const { title, note, unlockdate, burydate, imageurl } = req.body;

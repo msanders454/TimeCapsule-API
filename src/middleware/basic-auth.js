@@ -1,3 +1,5 @@
+//Code to get middleware token
+
 const AuthService = require("../authRouter/authService");
 
 function requireAuth(req, res, next) {

@@ -1,4 +1,4 @@
-
+//Different functions to run capsule database
 const service = {
     getAllCapsules(knex) {
         return knex.select('*').from('capsules')

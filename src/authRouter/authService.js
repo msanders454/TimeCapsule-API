@@ -2,6 +2,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("../config");
 
+
+// Different Functions to verfiy user log in
 const AuthService = {
   getUserWithUserName(db, user_name) {
     return db("users")

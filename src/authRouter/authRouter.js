@@ -4,6 +4,9 @@ const AuthService = require('./authService');
 const authRouter = express.Router();
 const jsonBodyParser = express.json();
 
+
+// Code use to verify user login
+
 authRouter
     .post('/login', jsonBodyParser, (req, res, next) => {
         const { user_name, password } = req.body

@@ -1,26 +1,106 @@
-# Express Boilerplate!
 
-This is a boilerplate project used for starting new projects!
 
-## Set up
+# The Time Capsule
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+“Memories will last forever”
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+## How it works 
 
-## Scripts
+This is a fun little app that users can create in order to remember memories/ talk to themselves in the future. Give yourself some life advice, or just a funny Meme to laugh at.
 
-Start the application `npm start`
+Users will create an account and and login in. Once they are logged in, they can start making capsules. Once a user has a capsule, it will either be locked or be available to view. The capsules will blink when they are able to view.
 
-Start nodemon for the application `npm run dev`
+## Demo
 
-Run the tests `npm test`
+[Live Page](red-zone-client.now.sh)
 
-## Deploying
+## Demo Log in
 
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+### Client Side Code
+
+[Server-side code](https://github.com/msanders454/RedZone-Server)
+
+## Endpoints
+
+This api is used to store user account information as well a capsule information.
+
+### users
+
+- GET /api/users/
+Returns all users arrays with user_name's data.
+
+- POST /api/users
+Verifies 3 inputs (password, user_name, full_name) and creates a new user
+
+- GET /api/users/:user_name
+Returns an array with only user_name's data.
+
+- DELETE /api/users/:user_name
+Deleted the array with only user_name's data.
+
+- PATCH /api/users/:user_name
+Updates the array with only user_name's data.
+
+
+## capsule
+- GET /api/capsule
+Returns an array with all capsule entries.
+
+- POST /api/capsule
+Adds a new capsule entry to the database.
+
+- GET /api/capsule/:capsule_id
+Returns an array with only capsule_id's data.
+
+- DELETE /api/expenses/:expense_id
+Deletes the array with only capsule_id's data
+
+- PATCH /api/capsule/:capsule_id
+Updates the array with only capsule_id's data.
+
+- GET /api/capsule/:capsule_usernumber
+Returns an array with only capsule_usernumber's data.
+
+- DELETE /api/capsule/:capsule_usernumber
+Deletes the array with only capsule_id's data
+
+- PATCH /api/capsule/:capsule_usernumber
+Updates the array with only capsule_usernumber's data.
+
+
+## auth
+- POST /api/auth
+Verifies input and creates a token key for an existing user.
+
+
+## Screen Shots
+
+![Login Page](https://github.com/msanders454/Red-Zone-Client/blob/master/src/Images/Loginpage.png)
+![Expense List Page](https://github.com/msanders454/Red-Zone-Client/blob/master/src/Images/Expenselist.PNG)
+![Add Expense Page](https://github.com/msanders454/Red-Zone-Client/blob/master/src/Images/AddExpense.PNG)
+![Statistics/ RedZone Alert Page](https://github.com/msanders454/Red-Zone-Client/blob/master/src/Images/Statistics.PNG)
+
+## Tech Stack
+
+**Front-End**
+
+- HTML
+- CSS
+- JavaScript
+- jQuery
+- Moment.js
+
+**Back-End**
+
+- Node.js
+- Express.js
+- Postgres
+- Mongoose
+- Mocha + Chai
+- Moment.js
+
+**Others**
+
+- Github
+- Heroku
+
