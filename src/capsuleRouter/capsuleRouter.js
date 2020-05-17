@@ -7,6 +7,8 @@ const xss = require('xss');
 const moment = require('moment')
 
 const serializeCapsule = capsule => {
+    capsule.burydate = moment(capsule.burydate).add(-4, 'hours')
+    capsule.unlockdate = moment(capsule.unlockdate).add(-4, 'hours')
     return {
     id: capsule.id,
     title: capsule.title,
