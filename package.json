@@ -29,9 +29,11 @@
     "morgan": "^1.9.1",
     "nodemon": "^2.0.3",
     "pg": "^8.0.3",
-    "postgrator-cli": "^3.3.0",
+    "postgrator": "^4.2.0",
     "supertest": "^4.0.2",
     "xss": "^1.0.6"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "postgrator-cli": "^3.2.0"
+  }
 }
